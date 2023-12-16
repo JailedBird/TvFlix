@@ -17,7 +17,7 @@ object Deps {
         const val retrofit = "2.9.0"
         const val paging = "3.1.0"
         const val room = "2.4.0"
-        const val kotlin = "1.5.31"
+        const val kotlin = "1.6.10"
         const val timber = "5.0.1"
         const val mockito_kotlin = "4.0.0"
         const val arch_core_testing = "2.1.0"

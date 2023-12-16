@@ -6,6 +6,8 @@ import com.android.tvflix.BuildConfig
 import com.android.tvflix.di.DaggerSet
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Lazy
 import dagger.Module
 import dagger.Provides
@@ -97,9 +99,12 @@ object NetworkModule {
         okHttpClient: Lazy<OkHttpClient>,
         @Named(TVMAZE_BASE_URL) baseUrl: String
     ): Retrofit {
+        val moshi = Moshi.Builder()
+            .addLast(KotlinJsonAdapterFactory())
+            .build()
         return Retrofit.Builder()
             .baseUrl(baseUrl)
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .callFactory { okHttpClient.get().newCall(it) }
             .build()
     }

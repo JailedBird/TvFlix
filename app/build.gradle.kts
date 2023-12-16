@@ -165,7 +165,7 @@ dependencies {
     // end-region Test
 
     implementation(Deps.Moshi.kotlin)
-    kapt(Deps.Moshi.codegen)
+    // kapt(Deps.Moshi.codegen)
 
     implementation(Deps.Coroutines.core)
     implementation(Deps.Coroutines.android)
@@ -186,3 +186,6 @@ dependencies {
 }
 
 
+kapt {
+    correctErrorTypes = true
+}
